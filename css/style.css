@@ -15,7 +15,7 @@ html {
   margin: 0 auto;
 }
 
-h2 span{
+h2 span {
   color: #00adb5;
 }
 
@@ -311,38 +311,37 @@ header > .container {
   opacity: 1;
 }
 
-
 /* Contact Me */
 
-.contact-me{
+.contact-me {
   padding: 5rem 1rem;
   background-color: #ffffff;
 }
 
-.contact-me > .container{
+.contact-me > .container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.form-container{
+.form-container {
   width: 90%;
   max-width: 500px;
 }
 
-.image-container{
+.image-container {
   width: 600px;
   align-self: center;
   display: none;
 }
 
-.contact-me h2{
+.contact-me h2 {
   text-align: center;
   font-size: 30px;
   margin: 1.5rem 0;
 }
 
-.contact-me form{
+.contact-me form {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -350,24 +349,24 @@ header > .container {
   align-items: center;
   margin: 0 auto;
   background-color: #ffffff;
-  box-shadow: .8px .8px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0.8px 0.8px 4px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   padding: 1rem;
 }
 
-.card-form{
+.card-form {
   width: 100%;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
-.card-form label{
+.card-form label {
   display: block;
   font-size: 14px;
   color: #222831;
 }
 
 .card-form input,
-.card-form textarea{
+.card-form textarea {
   width: 100%;
   background-color: #f4f4f4;
   resize: none;
@@ -378,64 +377,62 @@ header > .container {
 }
 
 .card-form input:focus,
-.card-form textarea:focus{
+.card-form textarea:focus {
   outline: none;
   border: 2px solid #777;
 }
 
-.card-form span{
+.card-form span {
   display: block;
   width: 100%;
   color: #dc3545;
-  font-size: 13px;;
+  font-size: 13px;
 }
 
-.contact-me input[type=submit]{
+.contact-me input[type="submit"] {
   width: 50%;
   background-color: #00adb5;
   padding: 5px 12px;
   border: none;
   border-radius: 3px;
   cursor: pointer;
-  transition: all .1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
-
-.contact-me input[type=submit]:hover{
+.contact-me input[type="submit"]:hover {
   background-color: #018d94;
 }
 
 /* Footer */
 
-footer{
+footer {
   background-color: #222831;
 }
 
-footer > .container{
+footer > .container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.social-media{
+.social-media {
   padding: 2rem;
 }
 
-.social-media a{
+.social-media a {
   text-decoration: none;
 }
 
-.social-media i{
+.social-media i {
   font-size: 42px;
   color: #eeeeee;
-  transition: all .1s ease-in-out;
-  margin: 0 .5rem;
+  transition: all 0.1s ease-in-out;
+  margin: 0 0.5rem;
 }
 
-.social-media i:hover{
+.social-media i:hover {
   color: #bbbbbb;
 }
-
 
 @media (min-width: 768px) {
   header {
@@ -515,7 +512,7 @@ footer > .container{
     order: 1;
   }
 
-  .image-container{
+  .image-container {
     display: block;
   }
 }
