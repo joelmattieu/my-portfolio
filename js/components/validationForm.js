@@ -9,65 +9,74 @@ const $form = document.getElementById("contact-form");
 function showMessage(input, message) {
   let $span = input.parentElement.querySelector("span");
   let inputName = input.name[0].toUpperCase() + input.name.substring(1);
-  $span.textContent = `${inputName} ${message}`;
+  $span.textContent = message;
 }
 
-function checkAll(input, min, max, e, regex) {
-  if (!input.value.match(regex)) {
-    showMessage(input, "is not valid");
-    e.preventDefault();
-  }
-
-  if (input.value === "") {
-    showMessage(input, "is required");
-    e.preventDefault();
-  }
-
-  if (input.value.length < min && input.value.length !== 0) {
-    showMessage(input, `must contain more than ${min} characters`);
-    e.preventDefault();
-  }
-
-  if (input.value.length > max) {
-    showMessage(input, `must contain less than ${max} characters`);
-    e.preventDefault();
-  }
+function hideMessage(input) {
+  let $span = input.parentElement.querySelector("span");
+  $span.textContent = "";
 }
 
-/* START VALIDATIONS */
-
-function validateName(input, e) {
-  let regexName =
-    /^([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+)(\s+([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+))*$/;
-
-  checkAll(input, 5, 15, e, regexName);
-}
-
-function validateEmail(input, e) {
-  let regexEmail =
+//Check email is valid
+function checkMail(input, e) {
+  const re =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-  checkAll(input, 5, 50, e, regexEmail);
+  if (re.test(input.value.trim())) {
+    hideMessage(input);
+  } else {
+    e.preventDefault();
+    showMessage(input, "Email is not valid");
+  }
 }
 
-function validateSubject(input, e) {
-  let regexSubject =
-    /^([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+)(\s+([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+))*$/;
-
-  checkAll(input, 5, 15, e, regexSubject);
+//Check required fields
+function checkRequired(inputArr, e) {
+  let isValid = false;
+  inputArr.forEach((input) => {
+    if (input.value.trim() === "") {
+      e.preventDefault();
+      showMessage(input, `${getFieldName(input)} is required`);
+    } else {
+      hideMessage(input);
+      isValid = true;
+    }
+  });
+  return isValid;
 }
 
-function validateMessage(input, e) {
-  checkAll(input, 15, 255, e);
+//Check input length
+function checkLenght(input, min, max, e) {
+  if (input.value.length < min) {
+    e.preventDefault();
+    showMessage(
+      input,
+      `${getFieldName(input)} must be at least ${min} characters`
+    );
+  } else if (input.value.length > max) {
+    e.preventDefault();
+    showMessage(
+      input,
+      `${getFieldName(input)} must be less than ${max} characters`
+    );
+  } else {
+    hideMessage(input);
+  }
+}
+
+// Get fieldname
+function getFieldName(input) {
+  return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
 
 export default function validationForm() {
   document.addEventListener("submit", (e) => {
     if (e.target === $form) {
-      validateName($name, e);
-      validateEmail($email, e);
-      validateSubject($subject, e);
-      validateMessage($message, e);
+      if (checkRequired([$name, $email, $subject, $message], e)) {
+        checkLenght($name, 3, 25, e);
+        checkLenght($subject, 4, 15, e);
+        checkLenght($message, 10, 255, e);
+        checkMail($email, e);
+      }
     }
   });
 }

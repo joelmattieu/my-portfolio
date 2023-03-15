@@ -1,13 +1,12 @@
 const $sections = document.querySelectorAll("section[data-section-obs]");
 
 export default function intersectionObserver() {
-
   let options = {
-    threshold: [0.5]
-  }
+    threshold: [0.5],
+  };
 
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       const id = entry.target.getAttribute("id");
       if (entry.isIntersecting) {
         document
@@ -18,11 +17,8 @@ export default function intersectionObserver() {
           .querySelector(`a[data-scroll][href="#${id}"]`)
           .classList.remove("active");
       }
-    })
+    });
   }, options);
 
-  
-
-  $sections.forEach(section => observer.observe(section));
+  $sections.forEach((section) => observer.observe(section));
 }
-

@@ -392,6 +392,7 @@ header > .container {
 .contact-me input[type="submit"] {
   width: 50%;
   background-color: #00adb5;
+  color: #eeeeee;
   padding: 5px 12px;
   border: none;
   border-radius: 3px;
