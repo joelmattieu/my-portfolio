@@ -163,13 +163,16 @@ header > .container {
 }
 
 .btn-cv {
+  text-decoration: none;
+  display: block;
   padding: 5px 12px;
+  width: 140px;
   border: none;
   border-radius: 4px;
   background-color: #00adb5;
   color: #eeeeee;
   margin-top: 1rem;
-  font-size: 18px;
+  font-size: 17px;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
